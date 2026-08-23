@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pour Steven 💙</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;background:linear-gradient(135deg,#dbeafe,#bfdbfe);overflow:hidden;color:#1e3a8a}
+.bg{position:fixed;inset:0;pointer-events:none}
+.h{position:absolute;bottom:-40px;opacity:.6;animation:f 9s linear infinite}
+@keyframes f{to{transform:translateY(-115vh) rotate(360deg);opacity:0}}
+.wrap{width:min(92vw,440px);text-align:center}
+.title{font-size:35px;margin-bottom:22px}
+.card{background:#eff6ffdd;border:1px solid #bfdbfe;border-radius:24px;padding:34px 24px;box-shadow:0 18px 55px #1e3a8a1e;backdrop-filter:blur(5px)}
+.heart{font-size:58px;margin-bottom:10px}
+p{font-size:19px;line-height:1.55}
+button{border:0;border-radius:999px;padding:16px 27px;background:#3b82f6;color:white;font:18px Georgia,serif;box-shadow:0 8px 20px #2563eb38;cursor:pointer}
+button:active{transform:scale(.96)}
+.hide{display:none}
+.letter{animation:in .9s ease both}
+@keyframes in{from{opacity:0;transform:translateY(25px) scale(.96)}to{opacity:1;transform:none}}
+.question{font-size:29px;color:#1d4ed8;font-weight:bold}
+.sig{font-size:16px;margin-top:22px;color:#1e40af}
+.yes{background:#2563eb}
+.msg{font-size:17px}
+</style>
+</head>
+<body>
+<div class="bg" id="bg"></div>
+<div class="wrap">
+<div class="title">💌 Pour Steven...</div>
+<div id="closed" class="card">
+<div class="heart">💙</div>
+<p>Steven, Bryan a préparé une petite surprise pour toi…</p>
+<p><strong>Tu veux découvrir ton message ?</strong></p>
+<button onclick="openIt()">✨ Ouvrir mon message</button>
+</div>
+<div id="open" class="card letter hide">
+<div class="heart">💙</div>
+<p>Steven, j’ai une question très importante à te poser…</p>
+<p>Tu m’accompagnes dans la plus belle aventure de ma vie ?</p>
+<div class="question">Veux-tu être mon témoin ?</div>
+<p class="msg">J’aimerais tellement partager ce moment avec toi. 🙌</p>
+<button class="yes" onclick="yes()">💙 OUI, JE VEUX !</button>
+<p id="final" class="sig hide">Je savais que je pouvais compter sur toi 💙<br><br>Bryan</p>
+</div>
+</div>
+<script>
+function openIt(){
+  const closedCard = document.getElementById('closed');
+  const openCard = document.getElementById('open');
+  closedCard.classList.add('hide');
+  openCard.classList.remove('hide');
+}
+function yes(){
+  final.classList.remove('hide');
+  for(let i=0;i<35;i++){
+    let x=document.createElement('div');
+    x.textContent=Math.random()>.4?'💙':'✨';
+    x.style.position='fixed';
+    x.style.left=Math.random()*100+'vw';
+    x.style.top='55vh';
+    x.style.fontSize=(14+Math.random()*24)+'px';
+    x.style.zIndex=20;
+    x.style.transition='1.8s ease-out';
+    document.body.appendChild(x);
+    requestAnimationFrame(()=>{
+      x.style.transform=`translate(${(Math.random()-.5)*350}px,${-250-Math.random()*450}px) rotate(${Math.random()*500}deg)`;
+      x.style.opacity=0;
+    });
+    setTimeout(()=>x.remove(),1900);
+  }
+}
+const bg = document.getElementById('bg');
+for(let i=0;i<16;i++){
+  let h=document.createElement('div');
+  h.className='h';
+  h.textContent='♡';
+  h.style.left=Math.random()*100+'vw';
+  h.style.animationDelay=(-Math.random()*9)+'s';
+  h.style.fontSize=(15+Math.random()*20)+'px';
+  bg.appendChild(h);
+}
+</script>
+</body>
+</html>
